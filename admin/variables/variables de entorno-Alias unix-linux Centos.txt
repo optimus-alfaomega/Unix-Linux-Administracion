@@ -1,0 +1,154 @@
+variables de entorno
+
+DISPLAY: Donde aparecen las salidas de x-windows
+HOME: directorio personal
+HOSTNAME: Nombre de la máquina
+MAIL: archivo de correo
+PATH : lista de directorios donde buscar los programas
+PS1 : Prompt
+SHELL : Tipo de terminal
+USER: Nombre de usuario 
+
+Como definir una variable de entorno, dependiendo del tipo de shell 
+
+bash: export VARIABLE=valor
+tcsh: setenv VARIABLE=valor 
+ bash:
+   ej:
+    export DISPLAY=localhost:0.0
+  tcsh:
+    ej: 
+     setenv DISPLAY localhost:0.0
+ 
+_______________________________________________________________________
+
+Alias 
+
+son nombres alternativos para un comando. Así, en lugar de escribir el comando propiamente dicho: ejm
+
+Dar nombres familiares a comandos comunes:
+ alias md='mkdir'
+Dar alias a comandos largos  
+ alias tbz2='tar -cv --use-compress-program=bzip2 -f' 
+
+Crearía un alias para el comando tar para que use el compresor bzip2 en lugar de
+gzip. 
+
+_______________________________________________________________________
+
+
+Archivos como entradas :
+
+Se crea un archivo entrada con dichas instrucciones:
+ open linuxcol.uniandes.edu.co
+ cd /pub/linux/utils
+ get *
+ quit
+ 
+ 
+ ejecutar el programa  ncftp < entrada . 
+ 
+
+Archivos como Salida
+
+ Se quiere saber los archivos que empiezan por i o I y almacenarlo en un archivo:
+ls [iI]* > listado.txt
+
+Es importante resaltar que el carácter de redirección de salida > destruirá el archivo al
+cual apunta, si este existe, para ser reemplazado por uno nuevo con los resultados del
+proceso. Si se desea anexar la información a uno ya existente debe usarse doble carácter
+
+_______________________________________________________________________
+
+
+Tuberias o Pipelines
+
+Una tubería o pipe es una combinación de varios comandos que se ejecutan
+simultáneamente, donde el resultado del primero se envía a la entrada del siguiente. Esta
+tarea se realiza por medio del carácter barra vertical | . Por ejemplo si se quiere ver todos
+los archivos que hay en el directorio /usr/bin, se ejecuta lo siguiente: ls /usr/bin |
+more. De este modo, la salida del programa ls (listado de todos los archivos del directorio
+/usr/bin) irá al programa more(modo paginado, es decir, muestra una pantalla y espera a
+que pulsemos una tecla para mostrar la siguiente). 
+
+ejemplo 
+
+ls /usr/bin | more
+
+
+Dentro de esta estructura se han construido una serie de programas conocidos como
+“filtros” los cuales realizan procesos básicos sobre textos
+
+
+sort: ordena lineas de textos
+cut: corta secciones de una linea 
+od: Convierte archivos a forma octal u otras
+paste: une líneas de diferentes archivos 
+tac: concatena e imprime archivos invertidos 
+tr: Traduce o borra caracteres
+uniq: Remueve lineas repetidas 
+wc: Cuenta Bytes, palabras y líneas
+
+otras herramientas como awk y sed asi como otras más modernas como Pearl
+
+
+_______________________________________________________________________
+
+
+comandos para programación shell
+
+
+ for name [ in word; ] do list ; done
+ select name [ in word ; ] do list ; done
+ case word in [ pattern [ | pattern ]\ldots ) list ;; ]\ldots esac
+ if list then list [ elif list then list ]\ldots [ else list ] fi
+ $while list do list done
+ $until list do list done
+ [ function ] name () { list; }
+
+
+
+ej: 
+
+#!/bin/sh
+#
+echo "---------- Captura fecha -----------"
+fecha=`date +%Y%m%d`
+#
+echo "---------- Haciendo Tar -----------"
+tar cvf backup$fecha.tar prog_dir1 prog_dir2 
+#
+echo "----------- Comprimiendo -----------"
+bzip2 backup$fecha.tar
+#
+echo "---------- Enviándolos a zip -------"
+cp ./backup$fecha.tar /mnt/zipdrive
+#
+echo "----------- Limpiando --------------"
+rm -f ./backup$fecha.tar
+#
+echo "----------- Final -------------"
+
+
+_______________________________________________________________________
+
+
+Historico de comandos
+
+El comando history muestra la secuencia de comandos, con un número a su izquierda.
+Con este número es posible llamar de nuevo el comando utilizando el carácter admiración
+``!''; Por ejemplo history retorna
+ 1 history
+ 2 ls
+ 3 cd public_html
+ 4 ls
+ 5 rm *.bak
+ 6 history
+y para ejecutar nuevamente el comando rm *.bak solo es necesario escribir !5. También
+se puede pedir el último ``rm'' que se ha ejecutado escribiendo !rm.
+El último comando se repite con doble admiración ``!!''. Es posible también editar el
+último comando utilizando el carácter ``^'' pero este conocimiento se esta volviendo poco
+útil, ya que los nuevos shells permiten viajar por la ``historia'' y editar los comandos
+usando únicamente las flechas del teclado. 
+
+

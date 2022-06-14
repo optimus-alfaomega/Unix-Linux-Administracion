@@ -1,0 +1,230 @@
+____________________________________
+concatena y muestra archivos
+    cat fich1 [...fichN]
+    ej: 
+	  cat /etc/passwd
+___________________________________
+ 
+Cambiar de directorio
+     cd [dir] 
+     ej: 
+	   cd /tmp
+___________________________________ 
+Cambiar permisos de archivos
+     chmod permisos archivos
+     ej:
+       chmod +x miscript 
+	
+___________________________________	
+Cambiar dueño de un archivo
+    chown usuario:grupo nombre_archivo
+    ej:
+      chown nobody miscript
+___________________________________
+
+copiar un archivo
+    cp fich1...fichN dir	
+    ej:
+      cp foo foo.backup
+___________________________________
+   
+Encuentra diferencias entre archivos
+    diff [-e]arch1 arch2
+    ej: 
+      diff foo.c newfoo.c
+
+___________________________________
+
+reportar el tamaño de un directorio
+    du [-sabr] fich
+	ej:
+ 	 du -s /home/
+
+___________________________________
+	 
+Conocer el tipo de archivo 
+   file arch
+   ej:
+     file arc_desconocido
+___________________________________ 
+
+Encontrar archivos
+    find dir test accion
+    ej: 
+     find . -name "back" - print
+   
+___________________________________
+identificar patrones en archivos
+    grep [-cilnv] expr archivos 
+     ej: 
+      grep mike /etc/passwd 
+
+___________________________________
+
+mostrar inicio de archivo
+     head -count archivo
+     ej:
+ 	   head proc.c
+___________________________________
+
+Crear un directorio
+    mkdir dir
+    ej:
+      mkdir temp
+___________________________________
+   
+ Mover archivos de un directorio a otro
+     mv arch1 arch2 ..archN dir 
+	 ej: 
+	   mv a.out prog1
+	
+___________________________________
+	
+Renombrar un archivo 
+     mv fich1 fich2 
+      ej: 
+	    mv prog1.c prog1.backup.c
+___________________________________
+ 
+ Visualiza un documento muy largo 
+      less/more archivo(s)
+       ej: 
+          more muy_largo.c
+	      less muy_largo.c 
+___________________________________
+	
+Crear un acceso directo o link a un directorio
+     ln [-s] fich acceso 
+       ej: 
+	      ln -s /users/mike/.profile
+   
+___________________________________
+   
+  listar contenido de un directorio
+    ls 
+     ej: 
+	   ls -l /usr/bin
+
+___________________________________
+
+  mostrar ruta de directorio
+   pwd
+     ej:
+   	   pwd 
+
+___________________________________
+  eliminar un archivos
+   rm arch
+     ej:
+       rm foo.c
+
+___________________________________
+ borrar todo un directorio
+   rm -r dir
+     ej: 
+	    rm -rf prog_dir 
+
+___________________________________
+ borrar directorio vacio
+   rmdir dir 
+     ej: 
+	    rmdir prog_dir 
+	
+___________________________________
+muestra el final del archivo 
+    tail 	-count file 
+     ej: 
+	    tail proc.c
+
+___________________________________
+editar un archivo
+     vi archivo
+       ej: 
+	     vi profile.c
+___________________________________
+Ejecutar un comando más tarde
+     at [-lr] hora [fecha]
+      ej:
+	  at 6pm Friday miscript
+___________________________________
+
+Muestra calendario del mes / año
+
+cal [[mes] año]
+   ej: 
+   cal 1 25
+	 
+___________________________________
+ 
+escribe un mensaje de salida estandar 
+ echo string 
+ ej:
+   echo "hola mundo"
+   
+ ___________________________________
+ 
+ 
+ Muestra información general sobre un usuario de red
+ 
+     finger usuario
+   ej: 
+    finger nn@user.com.com
+ ___________________________________
+ 
+ 
+ mostrar el número id del usuario 
+     id 
+	 ej: 
+	   id usuario
+ 
+ ___________________________________
+ 
+ matar un proceso del sistema operativo
+ 
+     kill [-señal] PID 
+	 ej: 
+	   kill 12345
+	 
+___________________________________
+
+Ayuda de un comando especifico del sistema operativo
+
+    man comando 
+	ej: 
+	 man gcc 
+	 man -k printer 
+___________________________________	 
+Cambio de contraseña 
+    passwd 
+	ej: 
+	 passwd
+___________________________________
+
+mostrar información de los proceoss que estan ejecutando
+
+   ps [aix]
+   
+   ej:
+    ps -ux 
+
+___________________________________
+
+Muesta información de los usuarios conectados al sistema
+ who / rwho
+
+ej: 
+  who
+  
+___________________________________
+
+ejecutar comandos en background 
+
+usar comando &, ej: 
+
+   cp -r /usr/src/linux /tmp &   
+   
+   al finalizar el sistema reporta con un mensaje:
+   
+   [Done] cp -r /usr/src/linux /tmp
+   
+   ___________________________________

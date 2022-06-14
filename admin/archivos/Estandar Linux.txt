@@ -1,0 +1,72 @@
+Archivos bash
+
+archivos donde se mantiene su configuración. Estos tienen una jerarquia
+que va desde el archivo de configuración del sistema para todos los shells,
+pasando por el archivo propio de shell, hasta los archivos de usuario
+
+archivos utilizados para especificar opciones dentro de bash.
+
+
+/bin/bash      Ejecutable bash
+/etc/profile   Archivo de inicialización utilizado por los shell 
+/.bash_profile Archivo(s) de inicialización personal
+/.profile 	   Utilizado por los shells 
+/.bash_login   Ejecuta cuando entra al shell
+/.bash_logout  Ejecuta cuando sale de la shell
+/.bashrc       Archivo personal de inicialización de shell 
+/.inputrc	   Archivo de inicialización individual
+
+
+_________________________________________________________________________________________
+
+Estandar de organización de directorios
+
+/ 			raiz (root), forma la base del sistema de archivos
+/boot 	    archivos del kernel (compilados).
+/bin 		Archivos ejecutables escenciales para todos los usuarios
+/dev 		archivos de dispositivos 
+/etc 		Archivos de configuración 
+/etc/rc.d	archivos de inicialización de sistema operativo
+/home		Generalmente, directorio de usuarios 
+/home/ftp   Contenido del servidor FTP 
+/home/httpd contenido del servidor WWW
+/lib 		Librerías escenciales y módulos del kernel 
+/mnt		Directorios donde "montar" dispositivos temporalmente
+/mnt/cdrom  Directorio donde se monta el CDROM 
+/mnt/floppy Directorio donde se monta el diskette
+/proc       Información sobre partes del sistema
+/root       Directorio principal del sistema 
+/sbin       Archivos ejecutables para tareas de administración
+/tmp		temporalmente
+/usr		Programas, documentos,fuentes ... compartidos por todo el sistema
+/var 		Archivos variables del sistema, bitácoras, temporales 
+_________________________________________________________________________________________
+
+Principales subdirectorios de /usr
+
+
+/usr/X11R6       Paquete XFree86 (X-Windows) Released 6
+/usr/bin         Archivos ejecutables para usuarios
+/usr/dict        Listados de palabras(diccionarios)
+/usr/doc 	     Documentación
+/usr/doc/FAQ     preguntas frecuentes
+/usr/doc/HOWTO   Howto's
+/usr/etc         Archivos de configuración del sistema
+/usr/games       Juegos
+/usr/include     Archivos de encabezado
+/usr/info        Sistema de información  GNU info.
+/usr/lib         Librerías
+/usr/local       Jerarquia de archivos locales
+/usr/man		 Manuales
+/usr/sbin        Archivos ejecutables de administración no vitales 
+/usr/share 	     Datos independientes de la arquitectura 
+/usr/share       Datos independientes de la arquitectura
+/usr/src		 Código fuente 
+/usr/src/linux   Código fuente del kernel de linux
+
+
+
+
+
+
+

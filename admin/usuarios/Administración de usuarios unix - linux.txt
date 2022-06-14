@@ -1,0 +1,83 @@
+administración de usuarios
+
+Creating a New Sudo User
+
+#adduser username
+
+Next, we will set a password for the user:
+
+passwd username
+
+Follow the prompt to create and confirm the password. Now, we want to give our new user sudo privileges so that we can become root and run commands which need administrative privileges. We can do this by entering the following command. 
+
+usermod -aG wheel username
+
+Last, we want to enable our new user to authenticate using the SSH public key we have already provided to the root user. We can use a simple rsync command to copy the public key over to our new user's authorized_keys file. 
+
+rsync --archive --chown=username:username ~/.ssh /home/username
+
+
+Before proceeding to the next step, log out and make sure that you are able to authenticate to the server as the new user using SSH. If you are unable to login as your new user, you will still be able to log in as root; confirm all of the commands have been entered correctly and try to log in as your new user again.
+
+
+Changing the SSH Daemon Configuration
+Since we are using SSH keys and a new user to authenticate to our server, we never want anyone to authenticate using a password or the root username. To accomplish this, we first want to navigate to the configuration file for the OpenSSH daemon. To do so, open the file in a text editor of your choice using the following command:
+
+sudo vi /etc/ssh/sshd_config
+There are three changes we want to make to this file.  First, we want to change the port on which OpenSSH listens for requests.
+
+At the top of the file, you will see a section that looks like this by default:
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+Uncomment the "Port" section and choose any valid port number like in the following example. In our example, we are using port 12345.
+
+Port 12345
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+Next scroll down to the # Authentication: portion of the file. You will see five options that will appear as follows by default:
+
+#LoginGraceTime 2m
+#PermitRootLogin yes
+PermitRootLogin yes
+#StrictModes
+#MaxAuthTries 6
+#MaxSessions 10 
+Here we want to change the "yes" next to "PermitRootLogin" to "no." It will appear as follows:
+
+#LoginGraceTime 2m
+#PermitRootLogin yes
+PermitRootLogin no
+#StrictModes
+#MaxAuthTries 6
+#MaxSessions 10
+Now we want to scroll down the sshd_config file a little further to make our final change - disabling password authentication. You will see a section that looks like this by default:
+
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+PasswordAuthentication yes
+We want to change the "yes" next to "PasswordAuthentication" to a "no." It will appear as follows:
+
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+PasswordAuthentication no
+Save and exit the file. Finally, we need to restart OpenSSH for the changes to take effect. Do this by entering the following command:
+
+sudo systemctl restart sshd.service
+Let's take a second to review what we did here. We changed the port number that we use to listen for SSH requests. Then, we disabled SSH access for the root user or any user trying to authenticate with a password. If we have done this correctly, the following command will no longer work to log in to the server.
+
+ssh username@xxx.xxx.xxx.xxx
+To log in now, we are going to have to specify the port number we are using to listen for SSH requests. That means from now on we will need to use the following command, replacing the number next to "-p" with the port number we chose earlier:
+
+ssh -p 12345 username@xxx.xxx.xxx.xxx
+Make sure that this command works and that the previous one does not. If it does, you are all set to access your server securely through SSH.
+
+
+
+
+
