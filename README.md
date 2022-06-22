@@ -2,7 +2,7 @@
 # proposito:
  Ser una biblioteca de conocimiento de administración para Unix linux
 
-#Contenido:
+# Contenido:
   Este repositorio tiene los siguientes directorios:
   - kafka 
   - Admin
@@ -14,10 +14,10 @@
 	   -Variables
 	 
   
-#kafka 
+# kafka 
   Configuración kafka 2.docx
     Manual de configuración de kafka 
-#Admin
+# Admin
   documentación de administración de sistemas Linux 
   
  ## Administracion 
